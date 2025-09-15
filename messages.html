@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Messages | BERWA SHOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C4AB6;
+            --primary-light: #8D72E1;
+            --secondary: #FF9B9B;
+            --accent: #FFD1D1;
+            --dark: #1A1A2E;
+            --light: #F9F9F9;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            background-color: #ff8080;
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .messages-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .message-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .message-card.unread {
+            border-left-color: var(--secondary);
+            background-color: #fff8f8;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .message-info h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .message-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .message-status {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-unread {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .status-read {
+            background-color: var(--light);
+            color: var(--text-light);
+        }
+
+        .message-content {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .message-content h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .message-content p {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .reply-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .reply-form {
+            display: none;
+        }
+
+        .reply-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: var(--light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--white);
+        }
+
+        .replies-section {
+            margin-top: 20px;
+        }
+
+        .reply-item {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .reply-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reply-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .reply-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .reply-content {
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .empty-messages {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .empty-messages i {
+            font-size: 4rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .empty-messages h3 {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .empty-messages p {
+            color: var(--text-light);
+        }
+
+        /* Modal for detailed view */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .message-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .message-actions {
+                justify-content: flex-start;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .message-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="staff_dashboard.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+
+        <div class="header">
+            <h1><i class="fas fa-envelope"></i> Manage Messages</h1>
+            <p>View and reply to customer inquiries and messages</p>
+        </div>
+
+        <!-- Alerts will be shown here after Formspree submission -->
+        <div id="form-alerts"></div>
+
+        <!-- Sample messages data - in a real app you might load this from a JSON file -->
+        <div class="messages-grid">
+            <!-- Message 1 -->
+            <div class="message-card unread">
+                <div class="message-header">
+                    <div class="message-info">
+                        <h3>Order Status Inquiry</h3>
+                        <div class="message-meta">
+                            <strong>Sarah Connor</strong> • 
+                            sarah@example.com • 
+                            +250788123456 • 
+                            May 15, 2023 10:30 AM
+                        </div>
+                    </div>
+                    <div class="message-status">
+                        <span class="status-badge status-unread">
+                            Unread
+                        </span>
+                    </div>
+                </div>
+
+                <div class="message-content">
+                    <h4>Message:</h4>
+                    <p>Hello, I would like to know the status of my order #101. When can I expect delivery?</p>
+                </div>
+
+                <div class="message-actions">
+                    <form id="markReadForm1" action="https://formspree.io/f/mvgqqgkg" method="POST">
+                        <input type="hidden" name="_subject" value="Message Marked as Read">
+                        <input type="hidden" name="_replyto" value="ishimwekwibukae@gmail.com">
+                        <input type="hidden" name="_cc" value="ishimwekwibukae@gmail.com">
+                        <input type="hidden" name="form_type" value="mark_read">
+                        <input type="hidden" name="message_id" value="1">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Mark as Read
+                        </button>
+                    </form>
+                    
+                    <button class="btn" onclick="toggleReplyForm(1)">
+                        <i class="fas fa-reply"></i> Reply
+                    </button>
+                </div>
+
+                <!-- Reply Form -->
+                <div class="reply-section">
+                    <div class="reply-form" id="replyForm1">
+                        <form id="replyForm1" action="https://formspree.io/f/mvgqqgkg" method="POST">
+                            <input type="hidden" name="_subject" value="Reply to Customer Message">
+                            <input type="hidden" name="_replyto" value="ishimwekwibukae@gmail.com">
+                            <input type="hidden" name="_cc" value="ishimwekwibukae@gmail.com">
+                            <input type="hidden" name="form_type" value="send_reply">
+                            <input type="hidden" name="message_id" value="1">
+                            <input type="hidden" name="customer_email" value="sarah@example.com">
+                            <input type="hidden" name="original_subject" value="Order Status Inquiry">
+                            <input type="hidden" name="original_message" value="Hello, I would like to know the status of my order #101. When can I expect delivery?">
+                            
+                            <div class="form-group">
+                                <label for="reply_message1">Your Reply:</label>
+                                <textarea name="reply_message" id="reply_message1" class="form-control" rows="4" required 
+                                        placeholder="Type your reply here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn">
+                                <i class="fas fa-paper-plane"></i> Send Reply
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Previous Replies -->
+                    <div class="replies-section">
+                        <h4>Previous Replies:</h4>
+                        <div class="reply-item">
+                            <div class="reply-header">
+                                <span class="reply-author">Staff Reply</span>
+                                <span class="reply-date">May 16, 2023 9:15 AM</span>
+                            </div>
+                            <div class="reply-content">
+                                Thank you for your inquiry. Your order #101 is being processed and will be shipped within 2 business days.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message 2 -->
+            <div class="message-card">
+                <div class="message-header">
+                    <div class="message-info">
+                        <h3>Product Availability</h3>
+                        <div class="message-meta">
+                            <strong>Mike Tyson</strong> • 
+                            mike@example.com • 
+                            +250788654321 • 
+                            May 14, 2023 2:45 PM
+                        </div>
+                    </div>
+                    <div class="message-status">
+                        <span class="status-badge status-read">
+                            Read
+                        </span>
+                    </div>
+                </div>
+
+                <div class="message-content">
+                    <h4>Message:</h4>
+                    <p>Hello, I'm interested in the African Print Dress. Do you have it in size XL?</p>
+                </div>
+
+                <div class="message-actions">
+                    <button class="btn" onclick="toggleReplyForm(2)">
+                        <i class="fas fa-reply"></i> Reply
+                    </button>
+                </div>
+
+                <!-- Reply Form -->
+                <div class="reply-section">
+                    <div class="reply-form" id="replyForm2">
+                        <form id="replyForm2" action="https://formspree.io/f/mvgqqgkg" method="POST">
+                            <input type="hidden" name="_subject" value="Reply to Customer Message">
+                            <input type="hidden" name="_replyto" value="ishimwekwibukae@gmail.com">
+                            <input type="hidden" name="_cc" value="ishimwekwibukae@gmail.com">
+                            <input type="hidden" name="form_type" value="send_reply">
+                            <input type="hidden" name="message_id" value="2">
+                            <input type="hidden" name="customer_email" value="mike@example.com">
+                            <input type="hidden" name="original_subject" value="Product Availability">
+                            <input type="hidden" name="original_message" value="Hello, I'm interested in the African Print Dress. Do you have it in size XL?">
+                            
+                            <div class="form-group">
+                                <label for="reply_message2">Your Reply:</label>
+                                <textarea name="reply_message" id="reply_message2" class="form-control" rows="4" required 
+                                        placeholder="Type your reply here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn">
+                                <i class="fas fa-paper-plane"></i> Send Reply
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Previous Replies -->
+                    <div class="replies-section">
+                        <h4>Previous Replies:</h4>
+                        <div class="reply-item">
+                            <div class="reply-header">
+                                <span class="reply-author">Staff Reply</span>
+                                <span class="reply-date">May 14, 2023 4:30 PM</span>
+                            </div>
+                            <div class="reply-content">
+                                Yes, we have the African Print Dress in size XL. It's currently in stock and ready for shipping.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle reply form visibility
+        function toggleReplyForm(messageId) {
+            const replyForm = document.getElementById('replyForm' + messageId);
+            const allReplyForms = document.querySelectorAll('.reply-form');
+            
+            // Close all other reply forms
+            allReplyForms.forEach(form => {
+                if (form.id !== 'replyForm' + messageId) {
+                    form.classList.remove('active');
+                }
+            });
+            
+            // Toggle current reply form
+            replyForm.classList.toggle('active');
+        }
+
+        // Handle form submissions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle mark as read forms
+            const markReadForms = document.querySelectorAll('form[id^="markReadForm"]');
+            markReadForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // For demo purposes, we'll just show a success message
+                    // In a real implementation, you would send this to Formspree
+                    showAlert('success', 'Message marked as read!');
+                    
+                    // In a real implementation, you would actually submit to Formspree:
+                    // fetch(this.action, {
+                    //     method: 'POST',
+                    //     body: new FormData(this),
+                    //     headers: {
+                    //         'Accept': 'application/json'
+                    //     }
+                    // })
+                    // .then(response => {
+                    //     if (response.ok) {
+                    //         showAlert('success', 'Message marked as read!');
+                    //     } else {
+                    //         throw new Error('Form submission failed');
+                    //     }
+                    // })
+                    // .catch(error => {
+                    //     showAlert('error', 'Error marking message as read. Please try again.');
+                    // });
+                });
+            });
+            
+            // Handle reply forms
+            const replyForms = document.querySelectorAll('form[id^="replyForm"]');
+            replyForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // For demo purposes, we'll just show a success message
+                    // In a real implementation, you would send this to Formspree
+                    showAlert('success', 'Reply sent successfully!');
+                    
+                    // Close the reply form
+                    const formId = this.id.replace('replyForm', '');
+                    toggleReplyForm(formId);
+                    
+                    // Reset the form
+                    this.reset();
+                    
+                    // In a real implementation, you would actually submit to Formspree:
+                    // fetch(this.action, {
+                    //     method: 'POST',
+                    //     body: new FormData(this),
+                    //     headers: {
+                    //         'Accept': 'application/json'
+                    //     }
+                    // })
+                    // .then(response => {
+                    //     if (response.ok) {
+                    //         showAlert('success', 'Reply sent successfully!');
+                    //         this.reset();
+                    //         toggleReplyForm(formId);
+                    //     } else {
+                    //         throw new Error('Form submission failed');
+                    //     }
+                    // })
+                    // .catch(error => {
+                    //     showAlert('error', 'Error sending reply. Please try again.');
+                    // });
+                });
+            });
+        });
+
+        // Show alert message
+        function showAlert(type, message) {
+            const alertsContainer = document.getElementById('form-alerts');
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+            
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.innerHTML = `
+                <i class="fas ${icon}"></i> ${message}
+            `;
+            
+            alertsContainer.appendChild(alertDiv);
+            
+            // Remove alert after 5 seconds
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

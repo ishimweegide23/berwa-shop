@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | BERWA SHOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C4AB6;
+            --primary-light: #8D72E1;
+            --secondary: #FF9B9B;
+            --accent: #FFD1D1;
+            --dark: #1A1A2E;
+            --light: #F9F9F9;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-card, .orders-card, .messages-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-card h2, .orders-card h2, .messages-card h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-card h2 i, .orders-card h2 i, .messages-card h2 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .user-info {
+            background-color: var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .user-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .info-value {
+            color: var(--text-light);
+        }
+
+        .order-item {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .order-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .order-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-pending { background-color: #fff3cd; color: #856404; }
+        .status-processing { background-color: #cce5ff; color: #004085; }
+        .status-shipped { background-color: #d1ecf1; color: #0c5460; }
+        .status-delivered { background-color: #d4edda; color: #155724; }
+        .status-cancelled { background-color: #f8d7da; color: #721c24; }
+
+        .back-btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background-color: #ff8080;
+        }
+
+        .message-item {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .message-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .message-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .message-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-unread { background-color: #dc3545; color: white; }
+        .status-read { background-color: #6c757d; color: white; }
+
+        .message-preview {
+            color: var(--text-light);
+            font-size: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+
+        <div class="header">
+            <h1><i class="fas fa-user-circle"></i> My Profile</h1>
+            <p>Welcome back, John Doe!</p>
+        </div>
+
+        <!-- Alerts will appear here after Formspree submission -->
+        <div id="form-alerts"></div>
+
+        <div class="profile-grid">
+            <div class="profile-card">
+                <h2><i class="fas fa-user-edit"></i> Edit Profile</h2>
+                
+                <div class="user-info">
+                    <h3>Current Information</h3>
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">John Doe</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">john@example.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Role:</span>
+                        <span class="info-value">Customer</span>
+                    </div>
+                </div>
+
+                <form id="profileForm" action="https://formspree.io/f/mvgqqgkg" method="POST">
+                    <input type="hidden" name="_subject" value="Profile Update Request">
+                    <input type="hidden" name="_replyto" value="ishimwekwibukae@gmail.com">
+                    <input type="hidden" name="_cc" value="ishimwekwibukae@gmail.com">
+                    <input type="hidden" name="form_type" value="update_profile">
+                    
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" value="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="+250788123456" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" required>123 Main St, Kigali, Rwanda</textarea>
+                    </div>
+
+                    <button type="submit" class="btn">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                </form>
+            </div>
+
+            <div class="orders-card">
+                <h2><i class="fas fa-shopping-bag"></i> Recent Orders</h2>
+                
+                <div class="order-item">
+                    <h4>Order #101</h4>
+                    <div class="info-item">
+                        <span class="info-label">Date:</span>
+                        <span class="info-value">May 15, 2023</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Total:</span>
+                        <span class="info-value">25,000 RWF</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="order-status status-processing">
+                            Processing
+                        </span>
+                    </div>
+                    <form action="https://formspree.io/f/mvgqqgkg" method="POST" style="margin-top: 10px;">
+                        <input type="hidden" name="_subject" value="Order Status Change Request">
+                        <input type="hidden" name="_replyto" value="ishimwekwibukae@gmail.com">
+                        <input type="hidden" name="_cc" value="ishimwekwibukae@gmail.com">
+                        <input type="hidden" name="form_type" value="update_order">
+                        <input type="hidden" name="order_id" value="101">
+                        <select name="new_status" onchange="this.form.submit()" style="padding: 8px; border-radius: 5px; border: 1px solid #e1e1e1; width: 100%;">
+                            <option value="pending" disabled>Change Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing" selected>Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancel Order</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="order-item">
+                    <h4>Order #100</h4>
+                    <div class="info-item">
+                        <span class="info-label">Date:</span>
+                        <span class="info-value">May 10, 2023</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Total:</span>
+                        <span class="info-value">18,000 RWF</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="order-status status-delivered">
+                            Delivered
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages-card">
+                <h2><i class="fas fa-envelope"></i> My Messages</h2>
+                
+                <div class="message-item">
+                    <div class="info-item">
+                        <h4>Order Status Inquiry</h4>
+                        <span class="message-status status-read">Read</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Date:</span>
+                        <span class="info-value">May 15, 2023</span>
+                    </div>
+                    <p class="message-preview">Hello, I would like to know the status of my order #101...</p>
+                    <a href="messages.html" class="btn" style="padding: 8px 15px; margin-top: 10px; font-size: 14px;">
+                        <i class="fas fa-eye"></i> View Message
+                    </a>
+                </div>
+
+                <div class="message-item">
+                    <div class="info-item">
+                        <h4>Product Question</h4>
+                        <span class="message-status status-unread">New Reply</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Date:</span>
+                        <span class="info-value">May 16, 2023</span>
+                    </div>
+                    <p class="message-preview">Staff has replied to your question about the African Print Dress...</p>
+                    <a href="messages.html" class="btn" style="padding: 8px 15px; margin-top: 10px; font-size: 14px;">
+                        <i class="fas fa-eye"></i> View Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submissions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Profile form submission
+            const profileForm = document.getElementById('profileForm');
+            if (profileForm) {
+                profileForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // For demo purposes, we'll just show a success message
+                    // In a real implementation, you would send this to Formspree
+                    showAlert('success', 'Profile update request sent successfully!');
+                    
+                    // In a real implementation, you would actually submit to Formspree:
+                    // fetch(this.action, {
+                    //     method: 'POST',
+                    //     body: new FormData(this),
+                    //     headers: {
+                    //         'Accept': 'application/json'
+                    //     }
+                    // })
+                    // .then(response => {
+                    //     if (response.ok) {
+                    //         showAlert('success', 'Profile update request sent successfully!');
+                    //     } else {
+                    //         throw new Error('Form submission failed');
+                    //     }
+                    // })
+                    // .catch(error => {
+                    //     showAlert('error', 'Error updating profile. Please try again.');
+                    // });
+                });
+            }
+            
+            // Order status change forms
+            const orderForms = document.querySelectorAll('form[action="https://formspree.io/f/mvgqqgkg"]');
+            orderForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // For demo purposes, we'll just show a success message
+                    // In a real implementation, you would send this to Formspree
+                    showAlert('success', 'Order status change request sent!');
+                    
+                    // In a real implementation, you would actually submit to Formspree:
+                    // fetch(this.action, {
+                    //     method: 'POST',
+                    //     body: new FormData(this),
+                    //     headers: {
+                    //         'Accept': 'application/json'
+                    //     }
+                    // })
+                    // .then(response => {
+                    //     if (response.ok) {
+                    //         showAlert('success', 'Order status change request sent!');
+                    //     } else {
+                    //         throw new Error('Form submission failed');
+                    //     }
+                    // })
+                    // .catch(error => {
+                    //     showAlert('error', 'Error updating order status. Please try again.');
+                    // });
+                });
+            });
+        });
+
+        // Show alert message
+        function showAlert(type, message) {
+            const alertsContainer = document.getElementById('form-alerts');
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+            
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.innerHTML = `
+                <i class="fas ${icon}"></i> ${message}
+            `;
+            
+            alertsContainer.appendChild(alertDiv);
+            
+            // Remove alert after 5 seconds
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

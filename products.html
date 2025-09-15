@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Collection | BERWA SHOP</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C4AB6;
+      --primary-light: #8D72E1;
+      --secondary: #FF9B9B;
+      --accent: #FFD1D1;
+      --dark: #1A1A2E;
+      --light: #F9F9F9;
+      --text: #333333;
+      --text-light: #777777;
+      --white: #FFFFFF;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 15px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: var(--transition);
+      padding: 8px 0;
+      position: relative;
+    }
+
+    nav ul li a.active {
+      color: var(--primary);
+    }
+
+    nav ul li a.active:after,
+    nav ul li a:hover:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+ /* New Join Now Dropdown Styles */
+    .join-now {
+      position: relative;
+    }
+
+    .join-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(108, 74, 182, 0.3);
+    }
+
+    .join-btn:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(108, 74, 182, 0.4);
+    }
+
+    .join-btn i {
+      margin-left: 8px;
+      transition: var(--transition);
+    }
+
+    .join-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 10px 0;
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      transform: translateY(10px);
+      z-index: 100;
+    }
+
+    .join-now:hover .join-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .join-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--text);
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .join-dropdown a:hover {
+      background-color: var(--light);
+      color: var(--primary);
+    }
+
+    .join-dropdown a i {
+      margin-right: 8px;
+      width: 16px;
+      text-align: center;
+    }
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-login {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      margin-right: 15px;
+    }
+
+    .btn-login:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-register {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 5px 15px rgba(108, 74, 182, 0.3);
+    }
+
+    .btn-register:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(108, 74, 182, 0.4);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    main {
+      margin-top: 80px;
+      padding: 40px 0;
+    }
+
+    /* Hero Slider */
+    .hero-slider {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .slider-container {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      transition: transform 0.8s ease;
+    }
+
+    .slide {
+      width: 33.33%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+    }
+
+    .slide:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .slide h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .slide p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .btn-slide {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 15px 40px;
+      font-size: 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-slide:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-3px);
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dot.active {
+      background-color: var(--white);
+      transform: scale(1.2);
+    }
+
+    /* Products Section */
+    .products-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .category-btn {
+      padding: 10px 25px;
+      background-color: var(--white);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-category {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .product-description {
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 18px;
+    }
+
+    .add-to-cart {
+      background-color: var(--primary);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .add-to-cart:hover {
+      background-color: var(--primary-light);
+      transform: rotate(15deg);
+    }
+
+    /* Order Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 9999;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background-color: var(--white);
+      max-width: 800px;
+      margin: 50px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: modalFadeIn 0.4s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 24px;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .order-summary {
+      margin-bottom: 30px;
+    }
+
+    .order-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .order-item-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .order-item-details {
+      flex: 1;
+    }
+
+    .order-item-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .order-item-price {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .order-item-quantity {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      background-color: var(--light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quantity-input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .remove-item {
+      color: var(--secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+
+    .order-total {
+      text-align: right;
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+
+    .order-total span {
+      color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    .btn-submit {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 80px 20px 30px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .footer-about p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .footer-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--primary);
+    }
+
+    .footer-links li {
+      margin-bottom: 15px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      transform: translateX(5px);
+    }
+
+    .footer-contact p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .slide h2 {
+        font-size: 36px;
+      }
+      
+      .slide p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transform: translateY(-150%);
+        transition: var(--transition);
+        z-index: 999;
+      }
+
+      nav.active {
+        transform: translateY(0);
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .auth-buttons {
+        margin-top: 20px;
+        flex-direction: column;
+      }
+
+      .btn-login {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .hero-slider {
+        height: 400px;
+      }
+
+      .modal-content {
+        margin: 20px auto;
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-slider {
+        height: 300px;
+      }
+      
+      .slide h2 {
+        font-size: 28px;
+      }
+      
+      .slide p {
+        font-size: 16px;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .category-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .slide-up {
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo"><i class="fas fa-tshirt"></i> BERWA SHOP</a>
+      
+        <nav id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="join-now">
+            <button class="join-btn">Join Now <i class="fas fa-chevron-down"></i></button>
+            <div class="join-dropdown">
+              <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+              <a href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+      <div class="slider-container" id="sliderContainer">
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+          <div class="slide-content">
+            <h2>Rwandan Inspired Fashion</h2>
+            <p>Discover our exclusive collection of modern clothing with traditional Rwandan influences</p>
+            <a href="products.html" class="btn-slide">Shop Now</a>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+          <div class="slide-content">
+            <h2>Premium Quality Fabrics</h2>
+            <p>Handcrafted with care using the finest materials sourced locally in Rwanda</p>
+            <a href="#featured-products" class="btn-slide">Explore Collection</a>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+          <div class="slide-content">
+            <h2>Perfect Fit Guarantee</h2>
+            <p>Custom tailoring available for all our products to ensure your perfect fit</p>
+            <a href="services.html" class="btn-slide">Learn About Tailoring</a>
+          </div>
+        </div>
+      </div>
+      <div class="slider-dots" id="sliderDots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="featured-products">
+      <div class="section-header slide-up">
+        <h2>Our Fashion Collection</h2>
+        <p>Discover premium clothing that blends modern style with Rwandan cultural influences</p>
+      </div>
+      
+      <div class="category-tabs">
+        <button class="category-btn active" data-category="all">All Products</button>
+        <button class="category-btn" data-category="dresses">Dresses</button>
+        <button class="category-btn" data-category="jumpsuits">Jumpsuits</button>
+        <button class="category-btn" data-category="suits">Suits</button>
+        <button class="category-btn" data-category="casual">Casual Wear</button>
+      </div>
+      
+      <div class="products-grid">
+        <!-- Dress 1 -->
+        <div class="product-card" data-category="dresses">
+          <div class="product-badge">New</div>
+          <img src="WhatsApp Image 2024-07-30 at 02.13.32.jpeg" alt="Modern Kitenge Dress" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Dresses</span>
+            <h3 class="product-title">Modern Kitenge Dress</h3>
+            <p class="product-description">Elegant dress with contemporary Rwandan kitenge print, perfect for special occasions.</p>
+            <div class="product-price">
+              <span class="price">25,000 RWF</span>
+              <button class="add-to-cart" data-product="Modern Kitenge Dress" data-price="25000" data-image="WhatsApp Image 2024-07-30 at 02.13.32.jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Jumpsuit -->
+        <div class="product-card" data-category="jumpsuits">
+          <img src="WhatsApp Image 2024-07-30 at 02.13.36 (1).jpeg" alt="African Print Jumpsuit" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Jumpsuits</span>
+            <h3 class="product-title">African Print Jumpsuit</h3>
+            <p class="product-description">Stylish one-piece with vibrant African-inspired patterns, comfortable and fashionable.</p>
+            <div class="product-price">
+              <span class="price">25,000 RWF</span>
+              <button class="add-to-cart" data-product="African Print Jumpsuit" data-price="25000" data-image="WhatsApp Image 2024-07-30 at 02.13.36 (1).jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dress 2 -->
+        <div class="product-card" data-category="dresses">
+          <img src="WhatsApp Image 2024-07-30 at 02.13.36.jpeg" alt="Elegant Evening Dress" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Dresses</span>
+            <h3 class="product-title">Elegant Evening Dress</h3>
+            <p class="product-description">Sophisticated dress with Rwandan-inspired embroidery, ideal for formal events.</p>
+            <div class="product-price">
+              <span class="price">25,000 RWF</span>
+              <button class="add-to-cart" data-product="Elegant Evening Dress" data-price="25000" data-image="WhatsApp Image 2024-07-30 at 02.13.36.jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Trouser -->
+        <div class="product-card" data-category="casual">
+          <img src="WhatsApp Image 2024-07-30 at 02.13.35.jpeg" alt="Traditional Print Trouser" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Casual Wear</span>
+            <h3 class="product-title">Traditional Print Trouser</h3>
+            <p class="product-description">Comfortable trousers featuring authentic Rwandan patterns, perfect for everyday wear.</p>
+            <div class="product-price">
+              <span class="price">25,000 RWF</span>
+              <button class="add-to-cart" data-product="Traditional Print Trouser" data-price="25000" data-image="WhatsApp Image 2024-07-30 at 02.13.35.jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Crop Top -->
+        <div class="product-card" data-category="casual">
+          <div class="product-badge">Bestseller</div>
+          <img src="WhatsApp Image 2024-07-30 at 02.13.14.jpeg" alt="Kitenge Crop Top" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Casual Wear</span>
+            <h3 class="product-title">Kitenge Crop Top</h3>
+            <p class="product-description">Trendy crop top with modern Rwandan kitenge design, pairs well with jeans or skirts.</p>
+            <div class="product-price">
+              <span class="price">15,000 RWF</span>
+              <button class="add-to-cart" data-product="Kitenge Crop Top" data-price="15000" data-image="WhatsApp Image 2024-07-30 at 02.13.14.jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dress 3 -->
+        <div class="product-card" data-category="dresses">
+          <img src="WhatsApp Image 2024-07-30 at 02.13.15 (1).jpeg" alt="Casual Kitenge Dress" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Dresses</span>
+            <h3 class="product-title">Casual Kitenge Dress</h3>
+            <p class="product-description">Lightweight dress perfect for everyday wear, featuring traditional Rwandan colors.</p>
+            <div class="product-price">
+              <span class="price">28,000 RWF</span>
+              <button class="add-to-cart" data-product="Casual Kitenge Dress" data-price="28000" data-image="WhatsApp Image 2024-07-30 at 02.13.15 (1).jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Shorts -->
+        <div class="product-card" data-category="casual">
+          <img src="WhatsApp Image 2024-07-30 at 02.13.15.jpeg" alt="African Print Shorts" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Casual Wear</span>
+            <h3 class="product-title">African Print Shorts</h3>
+            <p class="product-description">Comfortable shorts with bold African patterns, great for warm weather.</p>
+            <div class="product-price">
+              <span class="price">15,000 RWF</span>
+              <button class="add-to-cart" data-product="African Print Shorts" data-price="15000" data-image="WhatsApp Image 2024-07-30 at 02.13.15.jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Suit -->
+        <div class="product-card" data-category="suits">
+          <div class="product-badge">Premium</div>
+          <img src="WhatsApp Image 2024-07-30 at 02.13.17.jpeg" alt="Modern African Suit" class="product-image">
+          <div class="product-info">
+            <span class="product-category">Suits</span>
+            <h3 class="product-title">Modern African Suit</h3>
+            <p class="product-description">Elegant suit blending contemporary style with traditional Rwandan fabrics.</p>
+            <div class="product-price">
+              <span class="price">40,000 RWF</span>
+              <button class="add-to-cart" data-product="Modern African Suit" data-price="40000" data-image="WhatsApp Image 2024-07-30 at 02.13.17.jpeg">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Order Modal -->
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Your Order</h3>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="order-summary" id="orderSummary">
+          <!-- Order items will be added here dynamically -->
+          <p class="empty-cart">Your cart is empty</p>
+        </div>
+        
+        <div class="order-total">
+          Total: <span id="orderTotal">0</span> RWF
+        </div>
+        
+        <form id="orderForm" action="products.html" method="POST">
+          <h4>Delivery Information</h4>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Delivery Address</label>
+            <textarea id="address" name="address" class="form-control" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="notes">Special Instructions</label>
+            <textarea id="notes" name="notes" class="form-control" rows="2"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Complete Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <a href="index.html" class="footer-logo"><i class="fas fa-tshirt"></i> BERWA SHOP</a>
+        <p>Your premier destination for modern Rwandan fashion. We bring you quality, style, and comfort in every piece.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/__k.w.i.b.u.k.a_/?next=%2F&hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/250780035482" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:ishimwekwibukae@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="sms:+250780035482"><i class="fas fa-sms"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3 class="footer-title">Customer Service</h3>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Payment Options</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h3 class="footer-title">Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> ishimwekwibukae@gmail.com</p>
+        <p><i class="fas fa-phone-alt"></i> +250 780 035 482</p>
+        <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
+        <p><i class="fas fa-money-bill-wave"></i> MTN Mobile Money: +250780035482</p>
+        <p><i class="fas fa-university"></i> Equity Bank: 4004101000874</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 BERWA SHOP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    // Sticky Header
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      const scrollTop = document.getElementById('scrollTop');
+      
+      if (window.scrollY > 100) {
+        header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+      
+      if (window.scrollY > 300) {
+        scrollTop.classList.add('active');
+      } else {
+        scrollTop.classList.remove('active');
+      }
+    });
+
+    // Scroll to top
+    document.getElementById('scrollTop').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      });
+    });
+
+    // Slider functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const sliderContainer = document.getElementById('sliderContainer');
+    
+    function showSlide(index) {
+      sliderContainer.style.transform = `translateX(-${index * 33.33}%)`;
+      
+      // Update dots
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+      
+      currentSlide = index;
+    }
+    
+    // Auto slide change
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 5000);
+    
+    // Dot click events
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+
+    // Category filtering
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter products
+        const category = btn.dataset.category;
+        
+        productCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Shopping cart functionality
+    const cart = [];
+    const orderModal = document.getElementById('orderModal');
+    const closeModal = document.getElementById('closeModal');
+    const orderSummary = document.getElementById('orderSummary');
+    const orderTotal = document.getElementById('orderTotal');
+    const addToCartBtns = document.querySelectorAll('.add-to-cart');
+    
+    // Add to cart
+    addToCartBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const product = btn.dataset.product;
+        const price = parseInt(btn.dataset.price);
+        const image = btn.dataset.image;
+        
+        // Check if product already in cart
+        const existingItem = cart.find(item => item.product === product);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            product,
+            price,
+            image,
+            quantity: 1
+          });
+        }
+        
+        updateCart();
+        orderModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    // Update cart display
+    function updateCart() {
+      if (cart.length === 0) {
+        orderSummary.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+        orderTotal.textContent = '0';
+        return;
+      }
+      
+      let summaryHTML = '';
+      let total = 0;
+      
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        summaryHTML += `
+          <div class="order-item">
+            <img src="${item.image}" alt="${item.product}" class="order-item-image">
+            <div class="order-item-details">
+              <h4 class="order-item-title">${item.product}</h4>
+              <div class="order-item-price">${item.price.toLocaleString()} RWF</div>
+              <div class="order-item-quantity">
+                <button class="quantity-btn minus" data-index="${index}">-</button>
+                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+                <button class="quantity-btn plus" data-index="${index}">+</button>
+                <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      orderSummary.innerHTML = summaryHTML;
+      orderTotal.textContent = total.toLocaleString();
+      
+      // Add event listeners to quantity controls
+      document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const index = e.target.dataset.index;
+          if (cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+            updateCart();
+          }
+        });
+      });
+      
+      document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const index = e.target.dataset.index;
+          cart[index].quantity += 1;
+          updateCart();
+        });
+      });
+      
+      document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const index = e.target.dataset.index;
+          const newQuantity = parseInt(e.target.value);
+          if (newQuantity > 0) {
+            cart[index].quantity = newQuantity;
+            updateCart();
+          }
+        });
+      });
+      
+      document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const index = e.target.dataset.index;
+          cart.splice(index, 1);
+          updateCart();
+        });
+      });
+    }
+    
+    // Modal controls
+    closeModal.addEventListener('click', () => {
+      orderModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === orderModal) {
+        orderModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    // Form submission
+    document.getElementById('orderForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // In a real application, you would send the order data to your server
+      // Here we'll just show a confirmation message
+      alert('Thank you for your order! Our team will contact you shortly to confirm delivery details.');
+      
+      // Reset cart and close modal
+      cart.length = 0;
+      updateCart();
+      orderModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Animation on scroll
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.slide-up, .fade-in');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementPosition < windowHeight - 100) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+
+    // Initialize animations
+    document.querySelectorAll('.slide-up').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 1s ease';
+    });
+
+    // Product card hover effect
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const btn = card.querySelector('.add-to-cart');
+        btn.style.transform = 'scale(1)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        const btn = card.querySelector('.add-to-cart');
+        btn.style.transform = 'scale(0)';
+      });
+    });
+  </script>
+</body>
+
+</html>
